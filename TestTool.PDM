@@ -1,0 +1,200 @@
+[Root]
+Most Recent Package=Test Tool v1.4d
+
+
+[Package|Standard Setup Package 1|Root]
+SubWizProgID=PDWizard.SetupPkgSubWiz
+BuildFolder=C:\projects\IngersollRand\TestTool\Package
+
+[Package|Standard Setup Package 1|Configure DAO ISAMs]
+Applicable=No
+
+[Package|Standard Setup Package 1|Configure DAO ODBC]
+JetWorkspace=
+ODBCDirect=
+
+[Package|Standard Setup Package 1|Files Found]
+
+[Package|Standard Setup Package 1|Files Released]
+
+[Package|Standard Setup Package 1|Missing Dependency Information]
+
+[Package|Standard Setup Package 1|Out-of-Date Dependency Information]
+
+[Package|Standard Setup Package 1|Files Added]
+
+[Package|Standard Setup Package 1|Files Removed]
+
+[Package|Standard Setup Package 1|Files In Project]
+C:\WINDOWS\system32\msvbvm60.dll=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEAUT32.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEPRO32.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\ASYCFILT.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\STDOLE2.TLB=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=Yes
+C:\WINDOWS\system32\MSCOMM32.OCX=Yes
+C:\WINDOWS\system32\tabctl32.ocx=Yes
+C:\WINDOWS\system32\MSCHRT20.OCX=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=Yes
+C:\WINDOWS\system32\VB6STKIT.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=Yes
+C:\projects\IngersollRand\TestTool\IngersollRandTestTool_v1.4a.exe=Yes
+
+[Package|Standard Setup Package 1|Configure Registry Files]
+Applicable=No
+
+[Package|Standard Setup Package 1|Configure Remote Servers]
+Applicable=No
+
+[Package|Standard Setup Package 1|Install Locations]
+C:\Documents and Settings\ahedin\Desktop\IngersolRandTestTool.exe=$(AppPath)
+C:\WINDOWS\system32\msvbvm60.dll=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEAUT32.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEPRO32.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\ASYCFILT.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\STDOLE2.TLB=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\system32\MSCOMM32.OCX=$(WinSysPath)
+C:\WINDOWS\system32\tabctl32.ocx=$(WinSysPath)
+C:\WINDOWS\system32\MSCHRT20.OCX=$(WinSysPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+C:\WINDOWS\system32\VB6STKIT.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+C:\projects\IngersollRand\TestTool\IngersollRandTestTool.exe=$(AppPath)
+C:\projects\IngersollRand\TestTool\IngersollRandTestTool_v1.3z.exe=$(AppPath)
+C:\projects\IngersollRand\TestTool\IngersollRandTestTool_v1.4a.exe=$(AppPath)
+
+[Package|Standard Setup Package 1|Configure Shared Files]
+Applicable=Yes
+C:\Documents and Settings\ahedin\Desktop\IngersolRandTestTool.exe=No
+C:\projects\IngersollRand\TestTool\IngersollRandTestTool.exe=No
+C:\projects\IngersollRand\TestTool\IngersollRandTestTool_v1.3z.exe=No
+C:\projects\IngersollRand\TestTool\IngersollRandTestTool_v1.4a.exe=Yes
+
+[Package|Standard Setup Package 1|Distribution]
+Type=single
+Size=
+Title=IR TestTool
+
+[Package|Standard Setup Package 1|IconGroups]
+Group0=$(Programs)
+PrivateGroup0=-1
+Parent0=
+
+[Package|Standard Setup Package 1|$(Programs)]
+Icon1=IngersolRandTestTool.exe
+Title1=IR TestTool
+StartIn1=$(AppPath)
+Key1=Icon3
+
+[Package|Standard Setup Package 1|Package]
+PackageFolder=C:\projects\IngersollRand\TestTool\Package
+ProjectFolder=C:\projects\IngersollRand\TestTool
+ServerSideCab=
+File1=C:\projects\IngersollRand\TestTool\Package\setup.exe
+File2=C:\projects\IngersollRand\TestTool\Package\Setup.Lst
+File3=C:\projects\IngersollRand\TestTool\Package\IngersollRandTestTool_v1.4a.CAB
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz
+
+
+[Package|Test Tool v1.4d|Root]
+SubWizProgID=PDWizard.SetupPkgSubWiz
+BuildFolder=C:\projects\IngersollRand\TestTool\Package
+
+[Package|Test Tool v1.4d|Configure DAO ISAMs]
+Applicable=No
+
+[Package|Test Tool v1.4d|Configure DAO ODBC]
+JetWorkspace=
+ODBCDirect=
+
+[Package|Test Tool v1.4d|Files Found]
+
+[Package|Test Tool v1.4d|Files Released]
+
+[Package|Test Tool v1.4d|Missing Dependency Information]
+
+[Package|Test Tool v1.4d|Out-of-Date Dependency Information]
+
+[Package|Test Tool v1.4d|Files Added]
+
+[Package|Test Tool v1.4d|Files Removed]
+
+[Package|Test Tool v1.4d|Files In Project]
+C:\WINDOWS\system32\msvbvm60.dll=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEAUT32.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEPRO32.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\ASYCFILT.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\STDOLE2.TLB=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=Yes
+C:\WINDOWS\system32\MSCOMM32.OCX=Yes
+C:\WINDOWS\system32\tabctl32.ocx=Yes
+C:\WINDOWS\system32\MSCHRT20.OCX=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=Yes
+C:\WINDOWS\system32\VB6STKIT.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=Yes
+C:\projects\IngersollRand\TestTool\IngersollRandTestTool_v1.4d.exe=Yes
+
+[Package|Test Tool v1.4d|Configure Registry Files]
+Applicable=No
+
+[Package|Test Tool v1.4d|Configure Remote Servers]
+Applicable=No
+
+[Package|Test Tool v1.4d|Install Locations]
+C:\Documents and Settings\ahedin\Desktop\IngersolRandTestTool.exe=$(AppPath)
+C:\WINDOWS\system32\msvbvm60.dll=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEAUT32.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEPRO32.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\ASYCFILT.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\STDOLE2.TLB=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\system32\MSCOMM32.OCX=$(WinSysPath)
+C:\WINDOWS\system32\tabctl32.ocx=$(WinSysPath)
+C:\WINDOWS\system32\MSCHRT20.OCX=$(WinSysPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+C:\WINDOWS\system32\VB6STKIT.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+C:\projects\IngersollRand\TestTool\IngersollRandTestTool.exe=$(AppPath)
+C:\projects\IngersollRand\TestTool\IngersollRandTestTool_v1.3z.exe=$(AppPath)
+C:\projects\IngersollRand\TestTool\IngersollRandTestTool_v1.4a.exe=$(AppPath)
+C:\projects\IngersollRand\TestTool\IngersollRandTestTool_v1.4d.exe=$(AppPath)
+
+[Package|Test Tool v1.4d|Configure Shared Files]
+Applicable=Yes
+C:\Documents and Settings\ahedin\Desktop\IngersolRandTestTool.exe=No
+C:\projects\IngersollRand\TestTool\IngersollRandTestTool.exe=No
+C:\projects\IngersollRand\TestTool\IngersollRandTestTool_v1.3z.exe=No
+C:\projects\IngersollRand\TestTool\IngersollRandTestTool_v1.4a.exe=Yes
+C:\projects\IngersollRand\TestTool\IngersollRandTestTool_v1.4d.exe=Yes
+
+[Package|Test Tool v1.4d|Distribution]
+Type=single
+Size=
+Title=IR TestTool
+
+[Package|Test Tool v1.4d|IconGroups]
+Group0=$(Programs)
+PrivateGroup0=-1
+Parent0=
+
+[Package|Test Tool v1.4d|$(Programs)]
+Icon1=IngersolRandTestTool.exe
+Title1=IR TestTool
+StartIn1=$(AppPath)
+Key1=Icon3
+
+[Package|Test Tool v1.4d|Package]
+PackageFolder=C:\projects\IngersollRand\TestTool\Package
+ProjectFolder=C:\projects\IngersollRand\TestTool
+ServerSideCab=
+File1=C:\projects\IngersollRand\TestTool\Package\setup.exe
+File2=C:\projects\IngersollRand\TestTool\Package\Setup.Lst
+File3=C:\projects\IngersollRand\TestTool\Package\IngersollRandTestTool_v1.4d.CAB
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz

@@ -1,0 +1,3 @@
+The cab file for your application has been built as 'C:\projects\IngersollRand\TestTool\Package\IngersollRandTestTool_v1.4d.CAB'.
+
+There is also a batch file in the support directory (C:\projects\IngersollRand\TestTool\Package\Support\IngersollRandTestTool_v1.4d.BAT) that will allow you to recreate the cab file in case you make changes to some of the files.

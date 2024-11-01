@@ -1,0 +1,50 @@
+Attribute VB_Name = "RevisionHistory"
+
+
+'** Version 1.3x
+'
+'1. Test Mode page only has controls for Radio state of Rx and sleep.
+'2. Moved statistics to new tab. Added new statistics. Shortened tab names.
+'3. Pert page has default value of zero in text boxes ( so that radio
+' uses
+'4. Added different test patterns for LSR testing.
+'5. Removed sync test buttons.
+'6. Added ping pong mode tab and checkbox for processing recieve
+'messages as Ping Pong messages.
+'7. Added LQI history to Raw Receive page.
+'8. Added Host Channel set, reserved register (Modulate/Rate),
+'resume scan mode, and dcs channel control mode.
+'9. Added serial number, dob, and born on data register boxes.
+'10.Added ReceiveRfMsg types 2 and 3.
+'11.Added brown out message from the test tool to the module.
+'12.Copyright string length is now version letter (1.3x)
+'13.Modified how log files are opened and closed so that log file for
+'ping pong mode could be added.
+'14.Test tool powers up with the correct default power level on the
+'Test Mode tab.
+'15.Fixed bug that checks for a valid number of bytes in the message
+'received from module.
+'16. Added clear rx buffer button/function that should be pressed when cycling power to ensure that old data isn't in the VB buffer.
+'17 Added chkProcessPing check box that when checked allows the test tool to process received messages as Ping Pong type messages.
+'18. Added do/while loop to Rx State Machine that processes things until the Idle state is reached.  This allows the tool to process things much faster.
+'19. In ProcessReadRegisters the value isn't loaded into the variable "temp" until the message length is checked.
+'
+'16.Changed name of WakeUpMsgSize to WakeUpMsgType.
+'17.Added status code of InvalidPayloadLength
+'18.Added Worm ( Wake-On radio message - 2 bytes )
+'19.Added Beacon Debug mode register
+'20.Code change-Moved LQI processing so that beacons could be processed
+'21.ScanStatus is now called sync status
+
+
+'** Version 1.2c
+'1. Added byte to Test mode command
+'
+'** Version 1.2b
+'1. Changed it so that it would fit on 1400x900 screen
+'
+'** Version 1.2
+'1. added append log command
+'2. fixed indexing problem with message size of 42
+'3. added Query Version Test button that repeats query version every 100 ms
+

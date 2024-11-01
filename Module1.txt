@@ -1,0 +1,256 @@
+Attribute VB_Name = "Module1"
+
+Private Sub PickTestApp()
+
+  TxCountMax = 1
+  
+  Select Case txtTestAppSelection
+  
+    Case 0, 3
+    
+      TestAppState = SetOperatingMode
+      TestAppTimer.Interval = 80
+    
+    Case 4
+    
+      TestAppState = SetOperatingMode
+      TestAppTimer.Interval = 80
+      TxCountMax = 4
+      
+    Case 1
+      
+      TestAppState = EnableAck
+      TestAppTimer.Interval = 80
+  
+    Case 2
+
+      TestAppState = PingPongTest
+      TestAppTimer.Interval = 20
+      TestApp2RxMsg = False
+      
+    Case 5
+    
+      TestAppState = Blaster
+      TestAppTimer.Interval = 1
+    
+    Case Else
+            
+      TestAppState = TestAppIdle
+      TestAppTimer.Interval = 10
+    
+  End Select
+  
+  
+  
+End Sub
+
+' send a dummy char, tx message, then sleep message
+Private Sub TestAppFsm()
+
+  Static TxCount As Byte
+  
+  If shpTestApp.FillColor = vbGreen Then
+    shpTestApp.FillColor = vbYellow
+  Else
+    shpTestApp.FillColor = vbGreen
+  End If
+  
+  Select Case TestAppState
+  
+    Case TestAppIdle
+    
+      TxCount = 0
+      
+      TestAppState = Idle
+      TestAppTimer.Enabled = False
+      shpTestApp.FillColor = vbRed
+      
+    ' test application #0
+      
+    Case SetOperatingMode
+    
+      ' use break to wake up the micro
+      SendBreak
+      
+      txtMicroReg(eRegisterNumber.OpMode).Text = Hex$(1)
+      
+      cmdSetMicroReg_Click eRegisterNumber.OpMode
+      
+      TestAppTimer.Interval = 80
+      
+      TestAppState = SetWakeUpMode
+      
+    Case SetWakeUpMode
+    
+      If txtTestAppSelection = 0 Then
+      
+        txtMicroReg(eRegisterNumber.WakeUpMode).Text = Hex$(2)
+      
+        cmdSetMicroReg_Click eRegisterNumber.WakeUpMode
+      
+        TestAppTimer.Interval = 80
+      
+        TestAppState = SendTxRfMsg
+      
+      Else
+        
+        TestAppTimer.Interval = 10
+      
+        TestAppState = SendTxRfMsg
+      
+      End If
+      
+    Case SendTxRfMsg
+    
+      ' use break to wake up the micro
+      If TxCount = 0 Then
+        SendBreak
+      End If
+      
+      ' now send the smallest rf message
+      ClearTxBoxes
+      optMsgType_Click TransmitRfMsg
+      cmdUpdateAndSend_Click
+      
+      TxCount = TxCount + 1
+      
+      TestApp2RxMsg = False
+      AckTimeout = False
+      AckTimer.Enabled = True
+      
+      TestAppTimer.Interval = 40
+      
+      
+      If txtTestAppSelection = 3 Then
+        TestAppState = WaitForAckTest3
+      Else
+        TestAppState = WaitForAck
+      End If
+      
+    Case WaitForAckTest3
+      
+      
+    
+    Case WaitForAck
+    
+      If TestApp2RxMsg Or AckTimeout Then
+      
+        If TxCount >= TxCountMax Then
+          If BeaconFail And txtTestAppSelection = 0 Then 'fail commmented out because it needs to check byte in message
+            TestAppState = SetWakeUpMode
+            BeaconFail = False
+          Else
+            TestAppState = SendSleep
+          End If
+        Else
+          TestAppState = SendTxRfMsg
+        End If
+        
+        TestApp2RxMsg = False
+        AckTimeout = False
+        AckTimer.Enabled = False
+        
+        If txtTestAppSelection = 3 Then
+          TestAppTimer.Interval = 400
+        Else
+          TestAppTimer.Interval = 1
+        End If
+      
+      End If
+      
+    Case SendSleep
+    
+      optModuleMode(1).Value = True
+      gModuleMode = 1
+      
+      ' send the sleep command
+      cmdSetModuleMode_Click
+      
+      'randomize when the next tx will be sent
+      TestAppTimer.Interval = 201 'CByte(Rnd Mod 255)
+      
+      TestAppState = SendTxRfMsg
+      
+      TxCount = 0
+      
+    ' test application #1
+    
+    Case EnableAck
+      
+      ' enable requesting acks
+      txtMicroReg(eRegisterNumber.RfReqAckMode).Text = Hex$(1)
+      
+      ' write register
+      cmdSetMicroReg_Click eRegisterNumber.RfReqAckMode
+      
+      TestAppTimer.Interval = 20
+      
+      TestAppState = EnableWor
+      
+    Case EnableWor
+      
+      ' set wake up mode to 1 second
+      txtMicroReg(eRegisterNumber.WakeUpMode).Text = Hex$(1)
+      
+      ' write register
+      cmdSetMicroReg_Click eRegisterNumber.WakeUpMode
+      
+      TestAppTimer.Interval = 5000
+      
+      TestAppState = DisableWor
+      
+    Case DisableWor
+    
+      ' disable wake up mode
+      txtMicroReg(eRegisterNumber.WakeUpMode).Text = Hex$(0)
+      
+      ' write register
+      cmdSetMicroReg_Click eRegisterNumber.WakeUpMode
+      
+      TestAppTimer.Interval = 20
+      
+      TestAppState = DisableAck
+    
+    Case DisableAck
+      
+      ' disable requesting acks
+      txtMicroReg(eRegisterNumber.RfReqAckMode).Text = Hex$(0)
+      
+      ' write register
+      cmdSetMicroReg_Click eRegisterNumber.RfReqAckMode
+      
+      TestAppTimer.Interval = 400
+      
+      TestAppState = EnableAck
+    
+    Case PingPongTest
+
+      If TestApp2RxMsg Then
+        
+        TestApp2RxMsg = False
+              
+        ' send the smallest rf message
+        ClearTxBoxes
+        optMsgType_Click TransmitRfMsg
+        cmdUpdateAndSend_Click
+
+        TestAppState = PingPongTest
+      
+      End If
+
+    Case Blaster
+      
+      ' value does not matter
+      txtMicroReg(eRegisterNumber.OpMode).Text = Hex$(0)
+      
+      ' write register
+      cmdSetMicroReg_Click eRegisterNumber.OpMode
+      
+      TestAppTimer.Interval = 10
+      
+      TestAppState = Blaster
+    
+  End Select
+    
+End Sub
+

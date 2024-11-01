@@ -1,0 +1,95 @@
+Private Sub OpenComm()
+
+  If MSComm1.PortOpen = False Then
+    MSComm1.PortOpen = True
+  End If
+    
+  ' set the baud rate to the non-standard value of 125000
+  SetBaudRate MSComm1, 125000
+  
+End Sub
+
+Private Sub cmdGetBaudRate_Click()
+  
+  Dim BaudRate As Long
+  
+  BaudRate = GetBaudRate(MSComm1)
+
+  lblCommPortRate = "Comm Port Rate: " + Str$(BaudRate)
+  
+End Sub
+
+' ****************************************
+' The PortOpen property should be set to True before calling.
+' May raise the following errors:
+' comPortNotOpen the PortOpen property has not been set to True
+' comDCBError failed to read current state of the port
+' comSetCommStateFailed failed to set new baud rate
+Sub SetBaudRate(Com As MSComm, baud As Long)
+  
+  Dim ComDcb As dcb
+  Dim ret As Long
+  ' Check port is open
+  If Not Com.PortOpen Then
+    Err.Raise comPortNotOpen, Com.Name, _
+    "Operation valid only when the port is open"
+    Exit Sub
+  End If
+  
+  ' Get existing Comm state
+  ret = GetCommState(Com.CommID, ComDcb)
+  
+  If ret = 0 Then
+    Err.Raise comDCBError, Com.Name, _
+    "Could not read current state of the port"
+    Exit Sub
+  End If
+  
+  ' Modify state with new baud rate
+  ComDcb.BaudRate = baud
+  
+  ' Set the new Comm state
+  ret = SetCommState(Com.CommID, ComDcb)
+  
+  If ret = 0 Then
+    Err.Raise comSetCommStateFailed, Com.Name, _
+    "Could not set port to specified baud rate"
+    Exit Sub
+  End If
+  
+
+End Sub
+
+
+' Get baud rate using Win32 API
+' The PortOpen property should be set to True before calling.
+' May raise the following errors:
+' comPortNotOpen the PortOpen property has not been set to True
+' comDCBError failed to read current state of the port
+Function GetBaudRate(Com As MSComm) As Long
+  
+  Dim ComDcb As dcb
+  Dim ret As Long
+
+  GetBaudRate = 0
+
+  ' Check port is open
+  If Not Com.PortOpen Then
+    Err.Raise comPortNotOpen, Com.Name, _
+    "Operation valid only when the port is open"
+  Exit Function
+  End If
+
+  ' Get Comm state
+  ret = GetCommState(Com.CommID, ComDcb)
+  
+  If ret = 0 Then
+    Err.Raise comDCBError, Com.Name, _
+    "Could not read current state of the port"
+    Exit Function
+  End If
+  
+  ' Extract baud rate
+  GetBaudRate = ComDcb.BaudRate
+
+End Function
